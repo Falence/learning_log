@@ -1,6 +1,4 @@
-from json.tool import main
 from django.db import models
-from django.forms import DateTimeField
 
 class Topic(models.Model):
     """A topic the user is learning about."""
