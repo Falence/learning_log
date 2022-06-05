@@ -51,14 +51,14 @@ def new_entry(request, topic_id):
     """Add a new entry."""
     topic = Topic.objects.get(id=topic_id)
 
+    if topic.owner != request.user:
+            raise Http404
+
     if request.method != 'POST':
         # No data submitted; create a blank form.
         form = EntryForm()
     else:
         # POST data submitted; process data.
-        if topic.owner != request.user:
-            raise Http404
-            
         form = EntryForm(data=request.POST)
         if form.is_valid():
             new_entry = form.save(commit=False)
