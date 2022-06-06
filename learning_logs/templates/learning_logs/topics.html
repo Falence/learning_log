@@ -5,13 +5,12 @@
 {% endblock page_header %}
 
 {% block content %}
-    <p>Topics</p>
     <ul>
         {% for topic in topics %}
             <li>
-                <h3>
+                <h4>
                     <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
-                </h3>
+                </h4>
             </li>
         {% empty %}
             <li>
@@ -19,5 +18,5 @@
             </li>
         {% endfor %}
     </ul>
-    <h3><a href="{% url 'learning_logs:new_topic' %}">Add a new topic</a></h3>
+    <a class="btn btn-primary" href="{% url 'learning_logs:new_topic' %}">Add a new topic</a>
 {% endblock %}
