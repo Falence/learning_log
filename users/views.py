@@ -4,7 +4,9 @@ from django.contrib.auth.forms import UserCreationForm
 
 def register(request):
     """Register a new user."""
-    if request.method != 'POST':
+    if request.user.is_authenticated:
+        return redirect('learning_logs:topics')
+    elif request.method != 'POST':
         # Display blank registration form
         form = UserCreationForm()
     else:
